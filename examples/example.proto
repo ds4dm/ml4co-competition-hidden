@@ -1,0 +1,32 @@
+syntax = "proto2";
+
+// To compile this protocol buffer download `protoc` binary from
+// https://github.com/protocolbuffers/protobuf/releases/tag/v3.15.8
+//
+// Then run
+// ```
+// protoc ./example.proto --python_out=./
+// ```
+//
+// This will create `example_pb2.py`. However, this file is already checked in
+// the repository for your convience. So, there is no need to actually ucompile
+// the proto file manually.
+//
+// To use protocol buffers in Python don't forget to install the module via
+//
+// ```
+// pip install protobuf
+// ```
+
+// This is an intent that controls how many MIPs to generate and their
+// properties.
+message ExampleIntentProto {
+  // The random seed to use when generating problems.
+  optional int32 random_seed = 1 [default = 42];
+
+  // How many MIPs to generate.
+  optional int32 num_models = 2 [default = 2];
+
+  // How many variables to include in each problem.
+  optional int32 num_variables = 3 [default = 3];
+}
