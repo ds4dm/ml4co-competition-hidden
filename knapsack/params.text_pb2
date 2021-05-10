@@ -12,7 +12,7 @@ b_max: 10
 f_min: [2.0, 2.0, 2.0]
 f_max: [2.0, 2.0, 2.0]
 
-# 100 "small" items.
+# 100 "small" items, each with 1 copy.
 item_param {
   i_min: 100
   i_max: 100
@@ -22,7 +22,7 @@ item_param {
   d_max: [0.1, 0.1, 0.1]
 }
 
-# 5 "big" items.
+# 5 "big" items, each with 1 copy.
 item_param {
   i_min: 5
   i_max: 5

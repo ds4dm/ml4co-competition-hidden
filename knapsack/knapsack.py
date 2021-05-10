@@ -41,8 +41,8 @@ def BuildMipForKnapsack(
   num_bins = len(knapsack.bin)
   num_resources = knapsack.r
 
-  # place_vars[i][b] contains the index of a variable denoting how many copies
-  # of item i to place in bin b.
+  # place_vars[i][b] contains the index of a variable denoting whether to place
+  # a copy of item i in bin b.
   place_vars = [[None] * num_bins for _ in range(num_items)]
   for i in range(num_items):
     for b in range(num_bins):
@@ -51,7 +51,7 @@ def BuildMipForKnapsack(
       var_proto.name = 'place_%d_%d' % (i, b)
       var_proto.is_integer = True
       var_proto.lower_bound = 0.0
-      var_proto.upper_bound = knapsack.item[i].c
+      var_proto.upper_bound = 1.0
 
   # Place the appropriate number of copies for each item:
   # for i:
