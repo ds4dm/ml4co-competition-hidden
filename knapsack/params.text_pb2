@@ -1,0 +1,33 @@
+# Exemplary parameters to generate a random multi-dimensional, multi-knapsack
+# with balancing (minimize the L_inf + L1 norm of devation from the perfectly
+# balanced placement).
+
+# 10 bins.
+b_min: 10
+b_max: 10
+
+# The total amoun of available resource is 2x than required.
+# This works as a "safety buffer" to minimize a risk of an infeasible model.
+# Note, there are 3 resources.
+f_min: [2.0, 2.0, 2.0]
+f_max: [2.0, 2.0, 2.0]
+
+# 100 "small" items.
+item_param {
+  i_min: 100
+  i_max: 100
+  c_min: 1
+  c_max: 1
+  d_min: [0.0, 0.0, 0.0]
+  d_max: [0.1, 0.1, 0.1]
+}
+
+# 5 "big" items.
+item_param {
+  i_min: 5
+  i_max: 5
+  c_min: 1
+  c_max: 1
+  d_min: [0.9, 0.9, 0.9]
+  d_max: [1.0, 1.0, 1.0]
+}

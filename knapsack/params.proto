@@ -1,0 +1,54 @@
+syntax = "proto2";
+
+message KnapsackParameters {
+  // How many bins to generate.
+  optional int32 b_min = 1 [default = 1];
+  optional int32 b_max = 2 [default = 1];
+
+  // The amount of resource available in each bin is equal to the total amount
+  // of the resource consumed by all items, divided by the number of bins, and
+  // multiplied by this randomized "factor".
+  repeated double f_min = 3;
+  repeated double f_max = 4;
+
+  // How to generate the items.
+  repeated ItemParameters item_param = 5;
+}
+
+message ItemParameters {
+  // How many items to generate.
+  optional int32 i_min = 1 [default = 1];
+  optional int32 i_max = 2 [default = 1];
+
+  // How many copies each item requires to be placed.
+  optional int32 c_min = 3 [default = 1];
+  optional int32 c_max = 4 [default = 1];
+
+  // How much of each resource an item requires.
+  repeated double d_min = 5;
+  repeated double d_max = 6;
+}
+
+message Knapsack {
+  // Number of resources.
+  optional int32 r = 1;
+
+  // All bins.
+  repeated Bin bin = 2;
+
+  // All items.
+  repeated Item item = 3;
+}
+
+message Bin {
+  // How much of each resource a bin provides.
+  repeated double s = 1;
+}
+
+message Item {
+  // How many copies the item has.
+  optional int32 c = 1;
+
+  // How much of each resource an item requires.
+  repeated double d = 2;
+}
