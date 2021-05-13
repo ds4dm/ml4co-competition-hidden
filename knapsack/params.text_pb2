@@ -6,7 +6,7 @@
 b_min: 10
 b_max: 10
 
-# The total amoun of available resource is 2x than required.
+# The total amount of available resource is 2x larger than required.
 # This works as a "safety buffer" to minimize a risk of an infeasible model.
 # Note, there are 3 resources.
 f_min: [2.0, 2.0, 2.0]

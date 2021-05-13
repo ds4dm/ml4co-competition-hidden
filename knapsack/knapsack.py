@@ -15,7 +15,7 @@ flags.DEFINE_string(
     'params',
     '',
     'Content of KnapsackParameters in text format. '
-    'Takes precedence of FLAGS.params_file.')
+    'Takes precedence over FLAGS.params_file.')
 
 flags.DEFINE_string(
     'params_file',
@@ -67,7 +67,7 @@ def BuildMipForKnapsack(
 
   # Ensure all items fit in their bins:
   # for b, r:
-  #   sum_{i} item(i).d(r) * place(i, b) <= knapsack.bin[b].s[r]
+  #   sum_{i} item(i).d(r) * place(i, b) <= knapsack.bin(b).s(r)
   for b in range(num_bins):
     for r in range(num_resources):
       ct_proto = model_proto.constraint.add()
@@ -115,7 +115,7 @@ def BuildMipForKnapsack(
     var_proto.is_integer = False
     var_proto.lower_bound = 0.0
     var_proto.upper_bound = 1.0
-    # We hard-code a separation between inf and L1 norms in the objective (the
+    # We hard-code a weighting between inf and L1 norms in the objective (the
     # former is always strictly more important than the latter).
     var_proto.objective_coefficient = 10.0 * num_bins * num_resources
 
