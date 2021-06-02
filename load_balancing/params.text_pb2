@@ -1,0 +1,61 @@
+# Example parameters to generate a random resilient load-balancing problem.
+
+# First class of workloads.
+workload_parameter {
+  # Exactly 50 workloads.
+  i_min: 50
+  i_max: 50
+
+  # Each workload requires between 1 and 5 units of work.
+  load_min: 1.0
+  load_max: 5.0
+
+  # Probability for being allowed to run on each class of worker.
+  allowed_worker_probability: 0.1
+  allowed_worker_probability: 0.01
+}
+
+# Second class of workloads.
+workload_parameter {
+  # Exactly 10 workloads.
+  i_min: 10
+  i_max: 10
+
+  # Each workload requires between 5 and 10 units of work.
+  load_min: 5.0
+  load_max: 10.0
+
+  # Probability for being allowed to run on each class of worker.
+  allowed_worker_probability: 0.01
+  allowed_worker_probability: 0.1
+}
+
+# First class of worker.
+worker_parameter {
+  # Exactly 500 workers of this class.
+  i_min: 500
+  i_max: 500
+
+  # Each worker has capacity between 0.3 and 0.5. These choices were designed to
+  # provide enough capacity for the first class of workload.
+  capacity_min: 0.3
+  capacity_max: 0.5
+
+  # The cost of using one of these workers.
+  cost: 1
+}
+
+# Second class of worker.
+worker_parameter {
+  # Exactly 500 workers of this class.
+  i_min: 500
+  i_max: 500
+
+  # Each worker has capacity between 0.1 and 0.3. These choices were designed to
+  # provide enough capacity for the second class of workload.
+  capacity_min: 0.1
+  capacity_max: 0.3
+
+  # The cost of using one of these workers.
+  cost: 1
+}
