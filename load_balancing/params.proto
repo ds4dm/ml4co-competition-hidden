@@ -29,7 +29,6 @@ message WorkerParameters {
   optional int32 i_min = 1 [default = 1];
   optional int32 i_max = 2 [default = 1];
 
-
   // The capacity of each worker. Selected uniformly at random from the interval
   // [capacity_min, capacity_max].
   optional double capacity_min = 3 [default = 1];
