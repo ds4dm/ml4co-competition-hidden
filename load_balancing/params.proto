@@ -1,0 +1,58 @@
+syntax = "proto2";
+
+message LoadBalancingParameters {
+  repeated WorkloadParameters workload_parameter = 1;
+  repeated WorkerParameters worker_parameter = 2;
+}
+
+message WorkloadParameters {
+  // How many workloads to generate. Selected uniformly at random from {i_min,
+  // i_min + 1, ..., i_max - 1, i_max}.
+  optional int32 i_min = 1 [default = 1];
+  optional int32 i_max = 2 [default = 1];
+
+  // The load associated with each workload. Selected uniformly at random from
+  // the interval [load_min, load_max].
+  optional double load_min = 3 [default = 1];
+  optional double load_max = 4 [default = 1];
+
+  // A probability distribution on allowed workers. For each worker generated
+  // from the i-th WorkerParameters, this worker is allowed for this workload
+  // with probability allowed_worker_probability[i] (each sampled
+  // independently).
+  repeated double allowed_worker_probability = 5;
+}
+
+message WorkerParameters {
+  // How many workers to generate. Selected uniformly at random from {i_min,
+  // i_min + 1, ..., i_max - 1, i_max}.
+  optional int32 i_min = 1 [default = 1];
+  optional int32 i_max = 2 [default = 1];
+
+  // The capacity of each worker. Selected uniformly at random from the interval
+  // [capacity_min, capacity_max].
+  optional double capacity_min = 3 [default = 1];
+  optional double capacity_max = 4 [default = 1];
+
+  // The cost of using this type of worker in the solution (deterministic).
+  optional double cost = 5;
+}
+
+message LoadBalancingProblem {
+  repeated Workload workload = 1;
+  repeated Worker worker = 2;
+}
+
+message Workload {
+  optional double load = 1;
+
+  // The indices of the workers that are allowed to process this workload.
+  repeated int32 allowed_workers = 2;
+}
+
+message Worker {
+  optional double capacity = 1;
+
+  // The cost of using this node in the solution.
+  optional double cost = 2;
+}
