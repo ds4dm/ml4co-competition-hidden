@@ -143,8 +143,6 @@ def MPModelProtoToMPS(model_proto: linear_solver_pb2.MPModelProto):
   nnz = sum(len(c.var_index) for c in model_proto.constraint)
   logging.info('# vars = %d, # cons = %d, # nz = %d', len(model_proto.variable),
                len(model_proto.constraint), nnz)
-  with open('model_dump.pb', 'wb') as fd:
-    fd.write(model_proto.SerializeToString())
   model_mps = pywraplp.ExportModelAsMpsFormat(model_proto)
   return model_mps
 
