@@ -1,6 +1,7 @@
 import logging
 import random
 import params_pb2
+import gzip
 
 from absl import app
 from absl import flags
@@ -151,12 +152,12 @@ def MPModelProtoToMPS(model_proto: linear_solver_pb2.MPModelProto):
 def BuildRandomizedModels(output: str, random_seed: int, num_models: int,
                           params: params_pb2.LoadBalancingParameters):
   for i in range(num_models):
-    filename = output + '_%d.mps' % i
+    filename = output + '_%d.mps.gz' % i
     logging.info('Building model %s', filename)
     problem = GenerateLoadBalancingProblem(params, random_seed + i)
     model = BuildMipForLoadBalancing(problem)
     model.name = 'LoadBalancing_%d' % i
-    with open(filename, 'w') as mps_file:
+    with gzip.open(filename, 'wt') as mps_file:
       mps_file.write(MPModelProtoToMPS(model))
 
 

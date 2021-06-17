@@ -1,6 +1,7 @@
 import logging
 import random
 import params_pb2
+import gzip
 
 from absl import app
 from absl import flags
@@ -168,12 +169,12 @@ def BuildRandomizedModels(output: str, random_seed: int, num_models: int,
                           knapsack_params:
                           params_pb2.KnapsackParameters):
   for i in range(num_models):
-    filename = output + '_%d.mps' % i
+    filename = output + '_%d.mps.gz' % i
     logging.info('Building model %s', filename)
     knapsack = GenerateKnapsack(knapsack_params, random_seed + i)
     model = BuildMipForKnapsack(knapsack)
     model.name = 'Knapsack_%d' % i
-    with open(filename, 'w') as mps_file:
+    with gzip.open(filename, 'wt') as mps_file:
       mps_file.write(MPModelProtoToMPS(model))
 
 
