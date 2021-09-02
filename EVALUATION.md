@@ -5,6 +5,7 @@ To evaluate participants and update the leaderboard, you'll need the following c
  - write access to https://github.com/calculquebec/magic-castle-neurips
  - write access to https://github.com/ds4dm/www.ecole.ai
  - an account on the cluster: https://ml4co.calculquebec.cloud
+ - the following google sheet (public): https://docs.google.com/spreadsheets/d/1YrKlKggEoBzH3WNRglUyPgFDAZEoZDBcbED-cV2WtHU/edit?usp=sharing
 
 # 1. Reserve the compute ressources
 
@@ -64,10 +65,20 @@ Place yourself in the project directory
 cd /project/def-sponsor00/ml4co-competition
 ```
 
+Before doing anything, copy the existing submissions (all folders in
+`submissions/` except `_old_results`, `_archives` and `baselines`) into a new folder
+under `submissions/_old_results/MONTH_DAY` corresponding to the last time
+the leaderboard was updated. You can find that information on the
+[leaderboard page](https://www.ecole.ai/2021/ml4co-competition/#leaderboard).
+
 Submissions are received in the email box
 `ml4co.competition@gmail.com`. To keep things manageable at the moment only
-two persons are managing the email box: Maxime and Justin. Reach out to them
+two persons have access the email box: Maxime and Justin. Reach out to them
 to collect the submission files to be evaluated.
+
+**Important**: keep track of everything you do (teams collected, teams evaluated etc.)
+in the [google spreadsheet](https://docs.google.com/spreadsheets/d/1YrKlKggEoBzH3WNRglUyPgFDAZEoZDBcbED-cV2WtHU/edit?usp=sharing)
+under the _Teams_ tab.
 
 Download the submission of the team you want to evaluate on your local
 machine. Note also the additional information that participants are
@@ -162,9 +173,13 @@ You can check that the jobs' status with the sq command
             291 gassmaxi def-sponsor0 run_evaluation  PD 1-06:00:00     1    1        N/A     20G  (Priority)
 ```
 
+**Important**: keep track of the jobs you run, along with which team / task / problem benchmark they correspond to
+in the [google spreadsheet](https://docs.google.com/spreadsheets/d/1YrKlKggEoBzH3WNRglUyPgFDAZEoZDBcbED-cV2WtHU/edit?usp=sharing)
+under the _Jobs_ tab.
+
 # 6. Babysit the jobs
 
-Make sure everything goes allright.
+Make sure everything goes alright.
 
 For intermediate evaluations, the expected runtime for each job is about:
  - 20x5 = 100 minutes (1h40) for the primal task
