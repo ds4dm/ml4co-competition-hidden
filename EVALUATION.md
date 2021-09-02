@@ -64,13 +64,14 @@ Place yourself in the project directory
 cd /project/def-sponsor00/ml4co-competition
 ```
 
-Submissions are received in the following email box
-`ml4co.competition@gmail.com` (the password will be communicated
-to you through another channel).
+Submissions are received in the email box
+`ml4co.competition@gmail.com`. To keep things manageable at the moment only
+two persons are managing the email box: Maxime and Justin. Reach out to them
+to collect the submission files to be evaluated.
 
 Download the submission of the team you want to evaluate on your local
 machine. Note also the additional information that participants are
-supposed to send us along with their submission. For example:
+supposed to send along with their submission. For example:
 ```
 name of your team: nf-lzg
 task(s) in which you are competing: dual
@@ -127,7 +128,7 @@ In the `conda.yaml` file, make sure the proper python / ecole / scip versions ar
 ```
   - python=3.7
   - scip=7.0.3
-  - ecole=0.7.2
+  - ecole=0.7.3
 ```
 
 In the `init.sh` file, make sure the participants do not alter the
