@@ -21,11 +21,11 @@ https://github.com/calculquebec/magic-castle-neurips/blob/master/main.tf
 
 To get, for example, 6 compute nodes, change line 20 of that file from
 ```hcl
-    node   = { type = "g1-18gb-c4-22gb", tags = ["node"], count = 0 }
+    node   = { type = "g1-8gb-c4-22gb", tags = ["node"], count = 0 }
 ```
 to:
 ```hcl
-    node   = { type = "g1-18gb-c4-22gb", tags = ["node"], count = 6 }
+    node   = { type = "g1-8gb-c4-22gb", tags = ["node"], count = 6 }
 ```
 
 Wait about 30 minutes for the changes to take effect.
@@ -65,22 +65,23 @@ Place yourself in the project directory
 cd /project/def-sponsor00/ml4co-competition
 ```
 
-Before doing anything, copy the existing submissions (all folders in
-`submissions/` except `_old_results`, `_archives` and `baselines`) into a new folder
-under `submissions/_old_results/MONTH_DAY` corresponding to the last time
+Before doing anything, make sure that the previous evaluations
+have been cleaned up, and the submissions evaluated in the previous round
+(the three folders `primal`, `dual` and `config`) have been placed into a folder
+under `submissions/_previous_rounds/MONTH_DAY` corresponding to the last time
 the leaderboard was updated. You can find that information on the
 [leaderboard page](https://www.ecole.ai/2021/ml4co-competition/#leaderboard).
 
 Submissions are received in the email box
 `ml4co.competition@gmail.com`. To keep things manageable at the moment only
-two persons have access the email box: Maxime and Justin. Reach out to them
+three persons have access the email box: Maxime, Justin and Lara. Reach out to them
 to collect the submission files to be evaluated.
 
 **Important**: keep track of everything you do (teams collected, teams evaluated etc.)
 in the [google spreadsheet](https://docs.google.com/spreadsheets/d/1YrKlKggEoBzH3WNRglUyPgFDAZEoZDBcbED-cV2WtHU/edit?usp=sharing)
 under the _Teams_ tab.
 
-Download the submission of the team you want to evaluate on your local
+Download the submissions of the teams you want to evaluate on your local
 machine. Note also the additional information that participants are
 supposed to send along with their submission. For example:
 ```
@@ -93,21 +94,11 @@ whether your team is composed only of students or not: yes
 Rename the submitted archive file so that it matches the team name.
 For example, here `submission.zip` should be renamed to `nf-lzg.zip`.
 
-Place the archive file in the `submissions/_archive/` folder along
-with the submissions already received.
-```bash
-[gassmaxi@login1 ml4co-competition]$ ls submissions/_archives/ -lh
-total 988K
--rwxrwxrwx. 1 gassmaxi def-sponsor00 5.2K Aug 10 20:23 ECNUNoah001.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 6.7K Aug  9 18:07 EI-OROAS.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 7.1K Aug 18 22:32 generaleyes.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 1.5K Aug 24 19:36 nf-lzg.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 711K Jul 29 19:58 Nuri.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 1.9K Aug 18 22:32 qqy.zip
--rwxrwxrwx. 1 gassmaxi def-sponsor00 247K Jul 29 19:56 uofx.zip
-```
+Depending on the task in which the team competes, place the archive file
+in the correct sub-folder within `submissions/`. For example, if the received submission
+concerns the dual task, place the file in `submissions/dual/`.
 
-Extract the submission somewhere, and make sure that it consists of
+Extract the submitted file somewhere, and make sure that it consists of
 a single folder named after the team name. It should contain at least
 the following files:
 ```
@@ -118,19 +109,23 @@ TEAM_NAME/agents/dual.py (if team competes in the dual task)
 TEAM_NAME/agents/config.py (if team competes in the config task)
 ```
 
-Finally, place the team's folder into our `submissions/` folder.
+Finally, place the team's folder along with the team's archive file. For example, if the received submission
+concerns the dual task, place the file in `submissions/dual/`.
 ```
-[gassmaxi@login1 ml4co-competition]$ ls submissions/ -lh
-total 0
-drwxrwsrwx. 2 gassmaxi def-sponsor00 137 Aug 24 19:41 _archives
-drwxrwsrwx. 4 gassmaxi def-sponsor00  68 Aug 11 21:55 baseline
-drwxrwxrwx. 4 gassmaxi def-sponsor00  85 Aug 11 16:04 ECNUNoah001
-drwxrwxrwx. 6 gassmaxi def-sponsor00  95 Aug  9 18:47 EI-OROAS
-drwxrwxrwx. 4 gassmaxi def-sponsor00  68 Aug 19 01:23 generaleyes
-drwxrwsrwx. 3 gassmaxi def-sponsor00  53 Aug 24 19:41 nf-lzg
-drwxrwxrwx. 4 gassmaxi def-sponsor00 115 Aug  3 15:12 Nuri
-drwxrwxrwx. 4 gassmaxi def-sponsor00  68 Aug 19 01:24 qqy
-drwxrwxrwx. 4 gassmaxi def-sponsor00 119 Aug  4 20:56 uofx
+[gassmaxi@login1 ml4co-competition]$ ls submissions/dual/ -l
+total 2352
+drwxr-xr-x. 4 gassmaxi def-sponsor00     66 Sep 17 18:28 ark
+-rw-r--r--. 1 gassmaxi def-sponsor00   4717 Sep 17 03:07 ark.zip
+drwxrwxr-x. 3 gassmaxi def-sponsor00    179 Sep 17 18:39 EI-OROAS
+-rw-r--r--. 1 gassmaxi def-sponsor00 729672 Sep 17 02:52 EI-OROAS.zip
+drwxr-xr-x. 4 gassmaxi def-sponsor00     84 Sep 17 18:39 gentlemenML4CO
+-rw-r--r--. 1 gassmaxi def-sponsor00 260982 Sep 17 03:13 gentlemenML4CO.zip
+drwxrwxr-x. 3 gassmaxi def-sponsor00    100 Sep 17 02:38 Nuri
+-rw-r--r--. 1 gassmaxi def-sponsor00 667041 Sep 17 02:35 Nuri.zip
+drwxrwxr-x. 4 gassmaxi def-sponsor00     66 Sep 17 03:03 qqy
+-rw-r--r--. 1 gassmaxi def-sponsor00   4507 Sep 17 02:57 qqy.zip
+drwxrwxr-x. 3 gassmaxi def-sponsor00    206 Sep  9 00:49 uofx
+-rw-r--r--. 1 gassmaxi def-sponsor00 728054 Sep 17 02:31 uofx.zip
 ```
 
 # 4. Check that the team submissions are legit
@@ -153,9 +148,9 @@ Edit the file `01_run_evaluations.sh`, and add (or uncomment) the three
 lines which correspond to the team and task you want to evaluate. For example, for team `nf-lzg`
 which competes in the dual task, those lines are:
 ```bash
-sbatch scripts/run_evaluation_nogpu.sh nf-lzg dual item_placement
-sbatch scripts/run_evaluation_nogpu.sh nf-lzg dual load_balancing
-sbatch scripts/run_evaluation_nogpu.sh nf-lzg dual anonymous
+sbatch scripts/run_evaluation.sh nf-lzg dual item_placement
+sbatch scripts/run_evaluation.sh nf-lzg dual load_balancing
+sbatch scripts/run_evaluation.sh nf-lzg dual anonymous
 ```
 Make sure that all other lines in that file are commented.
 
@@ -215,7 +210,7 @@ Each job produces a log file, `logs/run_evaluation_JOBID.out`. Unfortunately thi
 is not written in real-time (buffer), so its content might appear empy until the job finishes.
 After the successful completion of a job, this log file should contain the output of the team's
 initialization script (conda outputs mostly), and the final part should contain the output of the
-evalaution itself, for the 20 instances evaluated (100 instances in the final evaluation).
+evaluation itself, for the 20 instances evaluated (100 instances in the final evaluation).
 For example, for job 289:
 ```bash
 [gassmaxi@login1 ml4co-competition]$ head -n 5 logs/run_evaluation_289.out 
@@ -238,7 +233,7 @@ Instance item_placement_10019.mps.gz
 Finally, if everything goes allright, each job should produce a CSV file with
 the results of the team. For example, for job 289:
 ```bash
-[gassmaxi@login1 ml4co-competition]$ cat submissions/nf-lzg/results/dual/1_item_placement.csv
+[gassmaxi@login1 ml4co-competition]$ cat results/nf-lzg/dual/1_item_placement.csv
 instance,seed,initial_primal_bound,initial_dual_bound,objective_offset,cumulated_reward
 ../../instances/1_item_placement/test/item_placement_10000.mps.gz,0,586.8111255119967,5.4059507480000075,0,8470.832700248262
 ../../instances/1_item_placement/test/item_placement_10001.mps.gz,1,585.0918695782982,2.858140179300038,0,3530.942670553831
@@ -271,6 +266,7 @@ student_teams = [
     "Nuri",
     "qqy",
     "nf-lzg",
+    ...
 ]
 ```
 
@@ -341,6 +337,13 @@ To get 0 compute nodes, change line 20 to:
 ```hcl
     node   = { type = "g1-18gb-c4-22gb", tags = ["node"], count = 0 }
 ```
+
+# 10. Clean up the processed submissions
+
+Move the three folders containing the submissions that you've evaluated
+(`submissions/primal`, `submissions/dual`, `submissions/config`) into a backup folder,
+under `submissions/_previous_rounds/MONTH_DAY` corresponding to the leaderboard update
+you just did.
 
 # Additional ressources
 
