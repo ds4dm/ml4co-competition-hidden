@@ -148,9 +148,9 @@ Edit the file `01_run_evaluations.sh`, and add (or uncomment) the three
 lines which correspond to the team and task you want to evaluate. For example, for team `nf-lzg`
 which competes in the dual task, those lines are:
 ```bash
-sbatch scripts/run_evaluation.sh nf-lzg dual item_placement
-sbatch scripts/run_evaluation.sh nf-lzg dual load_balancing
-sbatch scripts/run_evaluation.sh nf-lzg dual anonymous
+sbatch scripts/run_evaluation.sh nf-lzg dual item_placement partial
+sbatch scripts/run_evaluation.sh nf-lzg dual load_balancing partial
+sbatch scripts/run_evaluation.sh nf-lzg dual anonymous partial
 ```
 Make sure that all other lines in that file are commented.
 
@@ -233,7 +233,7 @@ Instance item_placement_10019.mps.gz
 Finally, if everything goes allright, each job should produce a CSV file with
 the results of the team. For example, for job 289:
 ```bash
-[gassmaxi@login1 ml4co-competition]$ cat results/nf-lzg/dual/1_item_placement.csv
+[gassmaxi@login1 ml4co-competition]$ cat results/partial/nf-lzg/dual/1_item_placement.csv
 instance,seed,initial_primal_bound,initial_dual_bound,objective_offset,cumulated_reward
 ../../instances/1_item_placement/test/item_placement_10000.mps.gz,0,586.8111255119967,5.4059507480000075,0,8470.832700248262
 ../../instances/1_item_placement/test/item_placement_10001.mps.gz,1,585.0918695782982,2.858140179300038,0,3530.942670553831
@@ -344,6 +344,10 @@ Move the three folders containing the submissions that you've evaluated
 (`submissions/primal`, `submissions/dual`, `submissions/config`) into a backup folder,
 under `submissions/_previous_rounds/MONTH_DAY` corresponding to the leaderboard update
 you just did.
+
+Also, copy-paste the team results that were used to build the leaderboard
+(`results/partial/*`) into a backup folder, under `results/_previous_rounds/MONTH_DAY`
+corresponding to the leaderboard update you just did.
 
 # Additional ressources
 
