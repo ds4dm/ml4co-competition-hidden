@@ -349,6 +349,42 @@ Also, copy-paste the team results that were used to build the leaderboard
 (`results/partial/*`) into a backup folder, under `results/_previous_rounds/MONTH_DAY`
 corresponding to the leaderboard update you just did.
 
+# 11. Send the official annoucement
+
+First, write an annoucement in the [discussions](https://github.com/ds4dm/ml4co-competition/discussions),
+with the `annoucement` tag. You can simply copy-paste one of the previous annoucements (e.g., New results: October 8th),
+and add in additional information for this week's evaluations if any.
+
+Second, copy-paste this announcement into an email that you'll send from the `ml4co.competition@gmail.com`
+account. As a title I usually use something like `[NeurIPS 2021 ML4CO competition] New results: October 8th`.
+Then, copy the list of all registered participants from the [registration form](https://docs.google.com/spreadsheets/d/1ScdUEtoJoj-WufgU-e3VPH0huHkZN2UJdV8S-JVp7Sg/edit?usp=sharing), and paste it into the BCC field (**not in the CC field!**
+Otherwise we disclose the whole list of participants to everyone). You can also include the list of all the organizers, in BCC again. I do that by hand:
+```
+Maxime Gasse <maxime.gasse@polymtl.ca>,
+Andrea Lodi <andrea.lodi@polymtl.ca>,
+Sebastian Pokutta <pokutta@zib.de>,
+Pawel Lichocki <pawell@google.com>,
+Miles Lubin <miles.lubin@gmail.com>,
+"Papageorgiou, Dimitri J" <dimitri.j.papageorgiou@exxonmobil.com>,
+Simon Bowly <Simon.Bowly@monash.edu>,
+Chris Cameron <cchris13@cs.ubc.ca>,
+Quentin Cappart <quentin.cappart@polymtl.ca>,
+Jonas Charfreitag <jcharfreitag@cs.uni-bonn.de>,
+Didier Chételat <didier.chetelat@polymtl.ca>,
+Justin Dumouchelle <dumouchelle.justin@polymtl.ca>,
+Ambros Gleixner <gleixner@zib.de>,
+Aleksandr Kazachkov <akazachk@gmail.com>,
+Elias Khalil <khalil@mie.utoronto.ca>,
+Christopher Morris <christopher.morris@tu-dortmund.de>,
+Antoine Prouvost <antoine.prouvost@polymtl.ca>,
+Lara Scavuzzo <lascavuzzo@gmail.com>,
+augustin.parjadis-de-lariviere@polymtl.ca,
+Quentin Cappart <quentin.cappart@gmail.com>,
+Antonia Chmiela <chmiela@zib.de>,
+Christoph Graczyk <graczyk@zib.de>
+```
+
+
 # Additional ressources
 
 How to use compute-canada:
